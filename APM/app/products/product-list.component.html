@@ -40,11 +40,17 @@
                             [style.width.px]='imageWidth'
                             [style.margin]='imageMargin'/>
                         </td>
-                        <td>{{product.productName}}</td>
+                        <td>
+                            <a [routerLink]="['/product',product.productId]">{{product.productName}}</a>
+                            </td>
                         <td>{{productCode}}</td>
                         <td>{{product.releaseDate}}</td>
                         <td>{{product.price | currency:'EUR':true:'1.2-2'}}</td>
-                        <td>{{product.starRating}}</td>
+                        <td>
+                            <ai-star [rating]='product.starRating'
+                                (ratingClicked)='onRatingClicked($event)'>
+                            </ai-star>
+                        </td>
                     </tr>
                 </tbody>
             </table>
